@@ -1,0 +1,85 @@
+.landing-page {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0B3C49;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .landing-header-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "text image";
+    background: hsla(321, 75%, 24%, 1);
+
+    background: linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+
+    background: -moz-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+
+    background: -webkit-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#690F49", endColorstr="#000000", GradientType=1 );
+    width: 100vw;
+    min-height: 100vh;
+  }
+
+  .landing-text-content {
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+  }
+  
+  .landing-header-text {
+    justify-self: center;
+    margin-top: 20vh;
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .landing-text {
+    justify-self: center;
+    margin-top: 2vh;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .get-started-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .landing-get-started{
+    user-select: none;
+    display: inline-block;
+    margin-top: 2vh;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .landing-get-started:hover{
+    background-color: #fff;
+    color: #2B061E;
+    cursor: pointer;
+}
+  
+  .landing-image {
+    height: 80vh;
+    width: auto;
+    object-fit: contain;
+    align-self: center;
+    justify-self: center;
+  }
