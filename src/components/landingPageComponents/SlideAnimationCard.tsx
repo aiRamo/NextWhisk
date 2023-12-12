@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './SlideAnimationCard.css';
 
 const SlideAnimationCard = () => {
-  const [topPosition, setTopPosition] = useState('5vh');
+  const [topPosition, setTopPosition] = useState('2vh');
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
@@ -12,8 +12,8 @@ const SlideAnimationCard = () => {
       const clientHeight = document.documentElement.clientHeight;
       const scrollPosition = (scrollTop + clientHeight) / scrollHeight * 100;
 
-      if (scrollPosition > 88) {
-        setTopPosition(`0%`);
+      if (scrollPosition > 80) {
+        setTopPosition(`0vh`);
         setOpacity(1);
       }
     };

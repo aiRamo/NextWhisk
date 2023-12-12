@@ -19,7 +19,9 @@ const LandingPage = () => {
                     <p className='landing-get-started'>Try It Out</p>
                 </div>
             </div>
-            <img src="https://picsum.photos/375/667" alt="description" className="landing-image" />
+            <div className='image-container'>
+              <img src="https://picsum.photos/375/667" alt="description" className="landing-image" />
+            </div>
         </div>
         <SlideAnimationCard />
     </div>
