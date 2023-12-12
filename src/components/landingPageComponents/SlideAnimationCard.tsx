@@ -28,9 +28,9 @@ const SlideAnimationCard = () => {
   return (
     <div className="card-container">
       <div className="slide-animation-card" style={{top: topPosition, opacity: opacity}}>
-        <div className="card-item"><p>content here:</p></div>
-        <div className="card-item"><p>content here:</p></div>
-        <div className="card-item"><p>content here:</p></div>
+        <div className="card-item"><p className='card-text'>content here:</p></div>
+        <div className="card-item"><p className='card-text'>content here:</p></div>
+        <div className="card-item"><p className='card-text'>content here:</p></div>
       </div>
     </div>
   

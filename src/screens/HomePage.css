@@ -7,19 +7,6 @@
     width: 100vw;
 }
 
-.homescreen-url-input {
-    width: 60vw;
-    height: 5vh;
-    font-size: 22px;
-    padding-inline: 10px;
-    margin-left: 16px;
-    line-height: 45px;
-    border-width: 0;
-    justify-items: center;
-    resize: none;
-    outline: none;
-  }
-
   .homescreen-title {
     font-size: 40px;
     text-align: center;
@@ -28,4 +15,9 @@
     padding-inline: 10px;
   }
 
-  
+  @media(orientation: portrait) {
+    .homescreen-title {
+      font-size: 30px;
+      margin-top: 4vh;
+    }
+  }

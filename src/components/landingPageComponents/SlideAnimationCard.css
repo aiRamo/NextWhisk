@@ -29,6 +29,10 @@
     font-size: 20px;
     font-weight: 600;
   }
+
+  .card-text {
+    color: #000;
+  }
 }
 
 @media (orientation: portrait) {
@@ -62,6 +66,9 @@
     align-items: center;
     font-size: 20px;
     font-weight: 600;
+  }
+  .card-text {
+    color: #000;
   }
 }
 
