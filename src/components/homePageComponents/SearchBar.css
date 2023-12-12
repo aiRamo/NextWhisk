@@ -77,3 +77,14 @@
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  @media(orientation: portrait) {
+    .homescreen-url-input {
+      width: 80vw;
+      font-size: 16px;
+    }
+    .mGlass-img {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
