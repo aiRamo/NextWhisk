@@ -12,16 +12,38 @@ const HomePage = () => {
   const [recipeJSON, setRecipeJSON] = useState({ Ingredients: [], Directions: []});
   const [prompt, setPrompt] = useState('');
 
+  const urlRegex = new RegExp(
+    '^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name and extension
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?'+ // port
+    '(\\/[-a-z\\d%_.~+]*)*'+ // path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i' // fragment locator
+  );
+
   const handleIconClick = async () => {
-    setRecipeJSON({ Ingredients: [], Directions: []})
-    setResponse('');
     setLoading(true);
-    try {
-      const res = await axios.post('http://localhost:3000/chat', { prompt });
-      setResponse(res.data.message.content);
-    } catch (error) {
-      console.error('Error fetching response', error);
+    if (prompt !== '' && urlRegex.test(prompt)){
+      setRecipeJSON({ Ingredients: [], Directions: []})
+      setResponse('');
+      try {
+        const res = await axios.post('http://localhost:3000/chat', { prompt });
+  
+        // Check if the response is an error message
+        if (typeof res.data === 'string' && res.data.startsWith('Error')) {
+          setResponse(res.data);
+        } else {
+          setResponse(res.data.message.content);
+        }
+        
+      } catch (error) {
+        setResponse('Error fetching response');
+      }
+    }
+    else {
       setResponse('Error fetching response');
+      setLoading(false);
     }
   };
 
@@ -29,10 +51,22 @@ const HomePage = () => {
     setPrompt(event.target.value);
   };
 
-  useEffect(() => {if (response != '') {
-    setRecipeJSON(JSON.parse(response));
-    setLoading(false);
-  }}, [response]);
+  useEffect(() => {
+    if (response !== '' && response !== 'Error fetching response') {
+      try {
+        console.log(response);
+        const parsedJSON = JSON.parse(response);
+        setRecipeJSON(parsedJSON);
+      } catch (error) {
+        console.error('Error parsing response', error);
+      } finally {
+        setLoading(false);
+      }
+    } else if (response === 'Error fetching response') {
+      setLoading(false);
+    }
+    
+  }, [response]);
 
   useEffect(() => {console.log(recipeJSON.Ingredients["1"])}, [recipeJSON]);
 

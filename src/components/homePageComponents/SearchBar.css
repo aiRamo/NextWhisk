@@ -76,6 +76,7 @@
     height: 70%;
     margin-left: 5px;
     margin-right: 5px;
+    user-select: none;
   }
 
   @media(orientation: portrait) {
@@ -91,5 +92,24 @@
     .mGlass-img {
       margin-left: 10px;
       margin-right: 10px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .input-search-modal {
+      width: 0px;
+      height: 0px;
+    }
+
+    .modal-text {
+      color: transparent;
+      margin-block: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      user-select: none;
+    }
+
+    .input-icon-wrapper:active {
+      background-color: slategray;
     }
   }
