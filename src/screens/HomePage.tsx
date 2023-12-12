@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './HomePage.css';
 import '../components/homePageComponents/Loader.css'
-import mGlass from '../assets/mGlass.png';
+import SearchBar from '../components/homePageComponents/SearchBar';
+import RecipeSummarySection from '../components/homePageComponents/RecipeSummarySection';
 
 const HomePage = () => {
 
@@ -38,43 +39,18 @@ const HomePage = () => {
   return (
     <div className='homescreen-container'>
       <p className='homescreen-title'>Please provide a URL to an online recipe</p>
-      <div className='input-wrapper'>
-        <textarea 
-          className='homescreen-url-input' 
-          onChange={handleInputChange} 
-          value={prompt}
-        ></textarea>
-        <div className='input-search-wrapper'>
-          <div className='input-icon-wrapper' onClick={handleIconClick}>
-            <img src={mGlass} alt="mGlass" className='mGlass-img' />
-          </div>
-          <div className='input-search-modal'>
-            <p className='modal-text'>Search</p>
-          </div>
-        </div>
-      </div>
+      <SearchBar
+        prompt={prompt}
+        handleInputChange={handleInputChange}
+        handleIconClick={handleIconClick}
+      />
 
       {loading && <div className='loader'/>}
 
-      {response != '' &&
-        <div className="grid-container">
-          {/* Ingredients column */}
-          <ul className="column">
-            <h3 className='list-header'>Ingredients</h3>
-            {Object.entries(recipeJSON.Ingredients).map(([key, value]) => (
-              <li key={key} className='list-entity'>{value + '\n'}</li>
-            ))}
-          </ul>
-
-          {/* Directions column */}
-          <ul className="column">
-            <h3 className='list-header'>Directions</h3>
-            {Object.entries(recipeJSON.Directions).map(([key, value]) => (
-              <li key={key} className='list-entity'>{value + '\n'}</li>
-            ))}
-          </ul>
-        </div>
-      }
+      <RecipeSummarySection
+        response={response}
+        recipeJSON={recipeJSON}
+      />
     </div>
   );
 };

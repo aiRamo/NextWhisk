@@ -1,0 +1,28 @@
+.grid-container {
+    display: grid;
+    width: 75vw;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+  
+.column {
+    list-style: decimal;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+}
+
+.list-header {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    margin-left: -20px;
+    margin-bottom: 15px;
+}
+
+.list-entity {
+    color: #fff;
+    margin-bottom: 10px;
+}
