@@ -1,0 +1,9 @@
+.camera-button{
+    color: #fff;
+    margin-top: 5vh;
+    width: fit-content;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}

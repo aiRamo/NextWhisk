@@ -4,6 +4,7 @@ import './HomePage.css';
 import '../components/homePageComponents/Loader.css'
 import SearchBar from '../components/homePageComponents/SearchBar';
 import RecipeSummarySection from '../components/homePageComponents/RecipeSummarySection';
+import CameraCaptureComponent from '../components/homePageComponents/CameraCaptureComponent';
 
 const HomePage = () => {
 
@@ -85,6 +86,8 @@ const HomePage = () => {
         response={response}
         recipeJSON={recipeJSON}
       />
+
+      <CameraCaptureComponent />
     </div>
   );
 };
