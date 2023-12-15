@@ -1,24 +1,28 @@
 import './RecipeSummarySection.css'
-import { useEffect } from 'react';
 
 interface RSSProps {
     response: string;
-    recipeJSON: { Ingredients: string[], Directions: string[]};
+    recipeJSON: { 
+        title: string,
+        host: string,
+        total_time: number,
+        yields: string,
+        ingredients: string[],
+        instructions: string[]
+    };
   }
   
 
 const RecipeSummarySection = ({response, recipeJSON}: RSSProps) => {
 
-    useEffect(() => {console.log(response)}, [response]);
-
     return(
         <>
-            {response !== 'Error fetching response' && response !== '' && (
+            {response === 'Success' && (
                 <div className="grid-container">
                     {/* Ingredients column */}
                     <ul className="column">
                         <h3 className='list-header'>Ingredients</h3>
-                        {Object.entries(recipeJSON.Ingredients).map(([key, value]) => (
+                        {Object.entries(recipeJSON.ingredients).map(([key, value]) => (
                         <li key={key} className='list-entity'>{value + '\n'}</li>
                         ))}
                     </ul>
@@ -26,7 +30,7 @@ const RecipeSummarySection = ({response, recipeJSON}: RSSProps) => {
                     {/* Directions column */}
                     <ul className="column">
                         <h3 className='list-header'>Directions</h3>
-                        {Object.entries(recipeJSON.Directions).map(([key, value]) => (
+                        {Object.entries(recipeJSON.instructions).map(([key, value]) => (
                         <li key={key} className='list-entity'>{value + '\n'}</li>
                         ))}
                     </ul>
