@@ -15,9 +15,34 @@
     padding-inline: 10px;
   }
 
+  .search-results-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+    align-self: center;
+    margin-top: 80px;
+    gap: 20px;
+  }
+  
+  .first-column {
+    grid-column: 1;
+    width: 500px;
+  }
+  
+  .middle-column {
+    grid-column: 2;
+    width: 500px;
+  }
+  
+  .last-column {
+    grid-column: 3;
+    width: 500px;
+  }
+
   @media(orientation: portrait) {
     .homescreen-title {
       font-size: 30px;
       margin-top: 4vh;
     }
   }
+

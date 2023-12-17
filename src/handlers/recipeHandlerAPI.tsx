@@ -20,34 +20,41 @@ const urlRegex = new RegExp(
     '(\\#[-a-z\\d_]*)?$','i' // fragment locator
 );
 
+const MAX_RETRIES = 0;
+
+async function tryScraping(prompt: string, retries = 0) {
+  try {
+    const res = await axios.post('http://localhost:3000/scrape', { prompt });
+
+    if (typeof res.data === 'string' && res.data.startsWith('Error')) {
+      throw new Error(res.data);
+    } else {
+      return res.data;
+    }
+  } catch (error) {
+    if (retries < MAX_RETRIES) {
+      return tryScraping(prompt, retries + 1);
+    } else {
+      throw error;
+    }
+  }
+}
+
 export const handleUrlRecipeParser = async (
   prompt: string, 
   setResponse: (value: string) => void, 
-  setLoading: (value: boolean) => void, 
   setRecipeJSON: (value: RecipeJSON) => void
   ) => {
     setResponse('');
-    setLoading(true);
     if (prompt !== '' && urlRegex.test(prompt)) {
-      
       try {
-        const res = await axios.post('http://localhost:3000/chat', { prompt });
-  
-        // Check if the response is an error message
-        if (typeof res.data === 'string' && res.data.startsWith('Error')) {
-          setResponse(res.data);
-        } else {
-          // Assuming the response is already in the correct JSON format
-          setRecipeJSON(res.data);
-          setResponse("Success");
-        }
+        const recipeData = await tryScraping(prompt);
+        setRecipeJSON(recipeData);
+        setResponse("Success");
       } catch (error) {
         setResponse('Error fetching response');
-      } finally {
-        setLoading(false);
       }
     } else {
       setResponse('Error fetching response');
-      setLoading(false);
     }
 };
