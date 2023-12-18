@@ -67,9 +67,12 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
                     <p className='search-result-card-title'>{recipeJSON.title}</p>
                     <p className='search-result-card-host'>{recipeJSON.host}</p>  
                 </div>
-                <p className='search-result-card-time'>{recipeJSON.total_time} mins</p>
-                <p className='search-result-card-yield'>{recipeJSON.yields}</p>
-                <p className='search-result-card-ingredientCount'>Ingredients: {recipeJSON.ingredients.length}</p>
+                <div className='search-result-card-infoWrapper'>
+                    <p className='search-result-card-time'>{recipeJSON.total_time} mins</p>
+                    <p className='search-result-card-yield'>{recipeJSON.yields}</p>
+                    <p className='search-result-card-ingredientCount'>Ingredients: {recipeJSON.ingredients.length}</p>
+                </div>
+
             </div>
            
         </div>

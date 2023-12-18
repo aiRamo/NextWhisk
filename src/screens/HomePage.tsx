@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './HomePage.css';
 import '../components/homePageComponents/Loader.css'
 import SearchBar from '../components/homePageComponents/SearchBar';
 import CameraCaptureComponent from '../components/homePageComponents/CameraCaptureComponent';
 import { handleSearch } from '../handlers/customSearchHandlerAPI';
 import { SearchResultCard } from '../components/homePageComponents/SearchResultCard';
+import { validateUrlRecipeParser } from '../handlers/recipeHandlerAPI';
 
 interface SearchResultItem {
   link: string;
@@ -22,7 +23,7 @@ const HomePage = () => {
   const [prompt, setPrompt] = useState('');
 
   const [results, setResults] = useState<SearchResultItem[]>([]);
-
+  const [validResults, setValidResults] = useState<SearchResultItem[]>([]);
   const isMobile = isMobileDevice();
 
 
@@ -30,10 +31,39 @@ const HomePage = () => {
     setPrompt(event.target.value);
   };
 
-  const searchResultCards = results.map((result, index) => (
+  const searchResultCards = validResults.map((result, index) => (
     <SearchResultCard key={index} result={result} />
   ));
 
+  useEffect(() => {
+    console.log(validResults);
+  }, [validResults]);
+
+
+  useEffect(() => {
+    const validateResults = async () => {
+      const valid = [];
+      for (const result of results) {
+        if (valid.length >= 3) break;
+        const response = await validateUrlRecipeParser(result.link);
+        if (response === "Success") {
+          valid.push(result);
+        }
+      }
+      setValidResults(valid);
+      setLoading(false);
+    };
+
+    if (results.length > 0) {
+      setLoading(true);
+      validateResults();
+    }
+  }, [results]);
+
+  const handleIconClick = () => {
+    setValidResults([]);
+    handleSearch(prompt, setResults, setLoading);
+  };
 
   return (
     <div className='homescreen-container'>
@@ -41,12 +71,12 @@ const HomePage = () => {
       <SearchBar
         prompt={prompt}
         handleInputChange={handleInputChange}
-        handleIconClick={() => handleSearch(prompt, setResults, setLoading)}
+        handleIconClick={handleIconClick}
       />
 
       {loading && <div className='loader'/>}
 
-      {!loading &&(
+      {validResults.length == 3 && !loading &&(
       <div className='search-results-container'>
         {searchResultCards.length >= 1 && (
           <div className="first-column">

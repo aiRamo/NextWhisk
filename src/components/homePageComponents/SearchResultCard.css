@@ -11,10 +11,11 @@
 
 
 .search-result-card-container{
+    position: relative;
     background-color: aliceblue;
     display: grid;
     height: 250px;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     border-radius: 5px;
     animation: fadeIn .5s ease-out forwards;
@@ -35,47 +36,66 @@
 }
 
 .search-result-card-img{
-    width: 250px;     
-    height: 250px;    
-    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     transition: filter 0.3s ease;
 }
 .search-result-card-info {
+    position: absolute;
+    left: 50%;
+    margin-left: 3%;
     display: grid;
-    width: 250px;
+    width: 50%;
+    height: 100%;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto auto;
   }
 
 .search-result-card-info-header{
-    grid-column: 1 / -1;
-    grid-row: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 92%;
     flex-direction: column;
     align-items: left;
-    margin: 0;
 }
 
 .search-result-card-title{
     margin: 0;
     margin-top: 10px;
     margin-right: 20px;
+    max-width: 100%;
     font-size: 20px;
     font-weight: 700;
 }
 
+
 .search-result-card-host{
     margin: 0;
+    width: 100%;
+    word-wrap: break-word;
     font-weight: 600;
     color: grey;
 }
 
+.search-result-card-infoWrapper{
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    flex-direction: column;
+    align-items: right;
+}
+
 .search-result-card-time{
-    grid-row: 2;
-    grid-column: 1;
     margin: 0;
-    margin-top: 50px;
     font-weight: 600;
 
 }
@@ -91,4 +111,42 @@
     grid-column: 1;
     margin: 0;
     font-weight: 600;
+}
+
+@media screen and (orientation: portrait) {
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px); /* Start from the left */
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .search-result-card-title{
+        font-size: large;
+        color: black;
+    }
+
+    .search-result-card-host{
+        font-size: small;
+        color: grey;
+    }
+
+    .search-result-card-time{
+        font-size: small;
+        color: black;
+    }
+
+    .search-result-card-yield{
+        font-size: small;
+        color: black;
+    }
+
+    .search-result-card-ingredientCount{
+        font-size: small;
+        color: black;
+    }
 }

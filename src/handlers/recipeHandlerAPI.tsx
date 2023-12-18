@@ -24,7 +24,7 @@ const MAX_RETRIES = 0;
 
 async function tryScraping(prompt: string, retries = 0) {
   try {
-    const res = await axios.post('http://localhost:3000/scrape', { prompt });
+    const res = await axios.post('http://192.168.1.238:3000/scrape', { prompt });
 
     if (typeof res.data === 'string' && res.data.startsWith('Error')) {
       throw new Error(res.data);
@@ -57,4 +57,17 @@ export const handleUrlRecipeParser = async (
     } else {
       setResponse('Error fetching response');
     }
+};
+
+export const validateUrlRecipeParser = async (prompt: string): Promise<string> => {
+  if (prompt !== '' && urlRegex.test(prompt)) {
+    try {
+      const recipeData: RecipeJSON = await tryScraping(prompt);
+      return recipeData && recipeData.title ? "Success" : "Invalid Recipe Data";
+    } catch (error) {
+      return 'Error fetching response';
+    }
+  } else {
+    return 'Invalid URL';
+  }
 };
