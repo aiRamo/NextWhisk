@@ -1,3 +1,5 @@
+
+
 .homescreen-container {
     display: flex;
     flex-direction: column;
@@ -7,64 +9,93 @@
     width: 100vw;
 }
 
-  .homescreen-title {
-    font-size: 40px;
-    text-align: center;
-    margin-top: 10vh;
-    color: #fff;
-    padding-inline: 10px;
-  }
+.homescreen-title {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 10vh;
+  color: #fff;
+  padding-inline: 10px;
+}
 
-  @media (orientation: landscape) {
-    .search-results-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      width: 80vw;
-      align-self: center;
-      margin-top: 20vh;
-      gap: 20px;
+.fading-out-title {
+  animation: fadeOutUpwards 0.5s ease-out forwards;
+}
+
+@media (orientation: landscape) {
+
+  @keyframes fadeOutUpwards {
+    0% {
+      opacity: 1;
+      margin-top: 10vh;
     }
-    
-    .first-column {
-      grid-column: 1;
-    }
-    
-    .middle-column {
-      grid-column: 2;
-    }
-    
-    .last-column {
-      grid-column: 3;
+    100% {
+      opacity: 0;
+      margin-top: 0vh;
     }
   }
 
+  .search-results-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+    align-self: center;
+    margin-top: 20vh;
+    gap: 20px;
+  }
   
+  .first-column {
+    grid-column: 1;
+  }
+  
+  .middle-column {
+    grid-column: 2;
+  }
+  
+  .last-column {
+    grid-column: 3;
+  }
+}
 
-  @media(orientation: portrait) {
-    .homescreen-title {
-      font-size: 30px;
+
+
+@media(orientation: portrait) {
+
+  @keyframes fadeOutUpwards {
+    0% {
+      opacity: 1;
       margin-top: 4vh;
     }
-
-    .search-results-container {
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      width: 90vw;
-      align-self: center;
-      margin-top: 80px;
-      gap: 20px;
-    }
-    
-    .first-column {
-      grid-row: 1;
-    }
-    
-    .middle-column {
-      grid-row: 2;
-    }
-    
-    .last-column {
-      grid-row: 3;
+    100% {
+      opacity: 0;
+      margin-top: -10vh;
     }
   }
+
+  .homescreen-title {
+    font-size: 30px;
+    margin-top: 4vh;
+  }
+
+  .search-results-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    width: 90vw;
+    align-self: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    gap: 20px;
+  }
+  
+  .first-column {
+    grid-row: 1;
+  }
+  
+  .middle-column {
+    grid-row: 2;
+  }
+  
+  .last-column {
+    grid-row: 3;
+  }
+}
 

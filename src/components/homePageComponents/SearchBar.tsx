@@ -5,12 +5,15 @@ interface SearchBarProps {
     prompt: string;
     handleInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     handleIconClick: () => void;
+    isTitleFadingOut: boolean;
   }
   
 
-const SearchBar = ({prompt, handleInputChange, handleIconClick}: SearchBarProps) => {
+const SearchBar = ({prompt, handleInputChange, handleIconClick, isTitleFadingOut}: SearchBarProps) => {
+
+    const wrapperStyle = isTitleFadingOut ? 'input-wrapper input-slide-up' : 'input-wrapper';
     return (
-        <div className='input-wrapper'>
+        <div className={wrapperStyle}>
             <textarea 
             className='homescreen-url-input' 
             onChange={handleInputChange} 

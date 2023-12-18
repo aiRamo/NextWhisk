@@ -26,6 +26,9 @@ const HomePage = () => {
   const [validResults, setValidResults] = useState<SearchResultItem[]>([]);
   const isMobile = isMobileDevice();
 
+  const [isTitleFadingOut, setIsTitleFadingOut] = useState(false);
+
+
 
   const handleInputChange = (event: any) => {
     setPrompt(event.target.value);
@@ -61,17 +64,21 @@ const HomePage = () => {
   }, [results]);
 
   const handleIconClick = () => {
+    setIsTitleFadingOut(true);
     setValidResults([]);
     handleSearch(prompt, setResults, setLoading);
   };
 
+  const titleClass = isTitleFadingOut ? 'homescreen-title fading-out-title' : 'homescreen-title';
+
   return (
     <div className='homescreen-container'>
-      <p className='homescreen-title'>Please provide a URL to an online recipe</p>
+      <p className={titleClass}>Please provide a URL to an online recipe</p>
       <SearchBar
         prompt={prompt}
         handleInputChange={handleInputChange}
         handleIconClick={handleIconClick}
+        isTitleFadingOut={isTitleFadingOut}
       />
 
       {loading && <div className='loader'/>}

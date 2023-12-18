@@ -1,3 +1,20 @@
+@media(orientation: landscape){
+  @keyframes slideUpwards {
+    0% {
+      margin-top: 5vh;
+    }
+    100% {
+      margin-top: 0vh;
+    }
+  }
+
+  .input-slide-up {
+    animation: slideUpwards 0.5s ease-out forwards;
+  }
+}
+
+
+
 .input-wrapper {
     display: flex;
     background-color: white;
@@ -6,110 +23,125 @@
     border-radius: 12px;
     margin-top: 5vh;
   }
+
+.homescreen-url-input {
+  width: 60vw;
+  height: 5vh;
+  font-size: 22px;
+  padding-inline: 10px;
+  margin-left: 16px;
+  line-height: 45px;
+  border-width: 0;
+  justify-items: center;
+  resize: none;
+  outline: none;
+}
+
+.input-search-wrapper {
+  display: flex;
+  min-width: 6%;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+@keyframes opacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.input-search-modal {
+  position: absolute;
+  bottom: -60px;
+  opacity: 0;
+  padding-inline: 8px;
+  background-color: slategray;
+  align-items: center;
+  border-radius: 6px;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.modal-text {
+  color: #fff;
+  margin-block: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  user-select: none;
+}
+
+.input-icon-wrapper {
+  display: flex;
+  min-width: 100%;
+  justify-content: center;
+  background-color: lightgrey;
+  align-items: center;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  height: calc(5vh + 4px);
+}
+
+.input-icon-wrapper:hover {
+  cursor: pointer;
+}
+
+.input-icon-wrapper:hover ~ .input-search-modal {
+  animation: opacity 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.mGlass-img {
+  height: 70%;
+  margin-left: 5px;
+  margin-right: 5px;
+  user-select: none;
+}
+
+@media(orientation: portrait) {
+
+  @keyframes slideUpwards {
+    0% {
+      margin-top: 2vh;
+    }
+    100% {
+      margin-top: 0vh;
+    }
+  }
+
   
+  .input-wrapper {
+    margin-top: 2vh;
+  }
+
+  .input-slide-up {
+    animation: slideUpwards 0.5s ease-out forwards;
+  }
   .homescreen-url-input {
-    width: 60vw;
-    height: 5vh;
-    font-size: 22px;
-    padding-inline: 10px;
-    margin-left: 16px;
-    line-height: 45px;
-    border-width: 0;
-    justify-items: center;
-    resize: none;
-    outline: none;
+    width: 65vw;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
   }
-  
-  .input-search-wrapper {
-    display: flex;
-    min-width: 6%;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
+  .mGlass-img {
+    margin-left: 10px;
+    margin-right: 10px;
+    user-select: none;
+    pointer-events: none;
   }
-  
-  @keyframes opacity {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
+
   .input-search-modal {
-    position: absolute;
-    bottom: -60px;
-    opacity: 0;
-    padding-inline: 8px;
-    background-color: slategray;
-    align-items: center;
-    border-radius: 6px;
-    transition: opacity 0.15s ease-in-out;
+    width: 0px;
+    height: 0px;
   }
-  
+
   .modal-text {
-    color: #fff;
+    color: transparent;
     margin-block: 10px;
     font-size: 14px;
     font-weight: 400;
     user-select: none;
   }
-  
-  .input-icon-wrapper {
-    display: flex;
-    min-width: 100%;
-    justify-content: center;
-    background-color: lightgrey;
-    align-items: center;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-    height: calc(5vh + 4px);
-  }
-  
-  .input-icon-wrapper:hover {
-    cursor: pointer;
-  }
-  
-  .input-icon-wrapper:hover ~ .input-search-modal {
-    animation: opacity 0.2s ease-in-out;
-    opacity: 1;
-  }
-  
-  .mGlass-img {
-    height: 70%;
-    margin-left: 5px;
-    margin-right: 5px;
-    user-select: none;
-  }
 
-  @media(orientation: portrait) {
-    .input-wrapper {
-      margin-top: 2vh;
-    }
-    .homescreen-url-input {
-      width: 65vw;
-      font-size: 16px;
-      background-color: #fff;
-      color: #000;
-    }
-    .mGlass-img {
-      margin-left: 10px;
-      margin-right: 10px;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    .input-search-modal {
-      width: 0px;
-      height: 0px;
-    }
-
-    .modal-text {
-      color: transparent;
-      margin-block: 10px;
-      font-size: 14px;
-      font-weight: 400;
-      user-select: none;
-    }
-
-    .input-icon-wrapper:active {
-      background-color: slategray;
-    }
+  .input-icon-wrapper:active {
+    background-color: slategray;
   }
+}
