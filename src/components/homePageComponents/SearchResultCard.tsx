@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './SearchResultCard.css';
 import { handleUrlRecipeParser } from '../../handlers/recipeHandlerAPI';
+import { useNavigate } from 'react-router-dom';
 
 interface SearchResultItem {
     link: string;
@@ -34,6 +35,8 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
     const [response, setResponse] = useState('');
     const [recipeJSON, setRecipeJSON] = useState(defaultJSON); // Assign the initial value to defaultJSON
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchRecipeData = async () => {
             await handleUrlRecipeParser(result.link, setResponse, setRecipeJSON);
@@ -55,11 +58,17 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
             console.log(recipeJSON);
         }
     }, [recipeJSON]);
+
+    const handleCardClick = () => {
+        
+        navigate('/dashboard', {state: { recipeJSON }}); // Navigate to RecipeDashboard when the card is clicked
+    };
+
     
     return (
         
         response === 'Success' && (
-        <div className='search-result-card-container'>
+        <div className='search-result-card-container' onClick={handleCardClick}>
             
             <img src={image.length > 0 ? image[0].src : 'default-placeholder-image.jpg'} alt="recipe" className='search-result-card-img' />
             <div className='search-result-card-info'>

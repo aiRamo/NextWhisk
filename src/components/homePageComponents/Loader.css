@@ -1,4 +1,8 @@
+
 .loader {
+    position: absolute;
+    left: calc(50vw - 100px);
+    top: 30vh;
     height: 200px;
     width: 200px;
     margin-top: 10vh;

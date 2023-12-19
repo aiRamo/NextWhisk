@@ -1,0 +1,26 @@
+.recipe-dashboard-container{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    top: 0;
+    background-color: #7d9ad1;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.recipe-dashboard{
+    align-self: center;
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    background-color: #b1c3e6;
+    width: 96vw;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    margin-left: 2vw;
+    min-height: 90vh;
+}
+
+.recipe-dashboard-info{
+    width: 100%;
+}

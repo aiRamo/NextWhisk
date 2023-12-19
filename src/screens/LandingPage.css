@@ -7,7 +7,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #0B3C49;
+    background-color: #7d9ad1;
   }
 
   ::-webkit-scrollbar {
@@ -18,15 +18,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "text image";
-    background: hsla(321, 75%, 24%, 1);
+    background: hsla(213, 88%, 31%, 1);
+    background: linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
+    background: -moz-linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7d9ad1", endColorstr="#000000", GradientType=1);
 
-    background: linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
 
-    background: -moz-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
-
-    background: -webkit-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#690F49", endColorstr="#000000", GradientType=1 );
     width: 100vw;
     min-height: 100vh;
   }
@@ -104,7 +102,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: #0B3C49;
+    background-color: #a0b3d6;
   }
 
   ::-webkit-scrollbar {
@@ -117,11 +115,11 @@
     grid-template-areas:
       "text"
       "image";
-    background: hsla(321, 75%, 24%, 1);
-    background: linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(321, 75%, 24%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#690F49", endColorstr="#000000", GradientType=1 );
+    background: hsla(213, 88%, 31%, 1);
+    background: linear-gradient(90deg, hsla(213, 88%, 31%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(213, 88%, 31%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(213, 88%, 31%, 1) 0%, hsla(0, 0%, 0%, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0A369D", endColorstr="#000000", GradientType=1);
     max-width: 100vw;
     min-height: 100vh;
     padding-bottom: 0%;

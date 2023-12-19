@@ -42,7 +42,7 @@ const HomePage = () => {
     console.log(validResults);
   }, [validResults]);
 
-
+  // Used to return a list of successful web scraping results
   useEffect(() => {
     const validateResults = async () => {
       const valid = [];

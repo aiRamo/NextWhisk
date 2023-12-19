@@ -20,9 +20,8 @@ const urlRegex = new RegExp(
     '(\\#[-a-z\\d_]*)?$','i' // fragment locator
 );
 
-const MAX_RETRIES = 0;
 
-async function tryScraping(prompt: string, retries = 0) {
+async function tryScraping(prompt: string) {
   try {
     const res = await axios.post('http://192.168.1.238:3000/scrape', { prompt });
 
@@ -32,11 +31,7 @@ async function tryScraping(prompt: string, retries = 0) {
       return res.data;
     }
   } catch (error) {
-    if (retries < MAX_RETRIES) {
-      return tryScraping(prompt, retries + 1);
-    } else {
-      throw error;
-    }
+
   }
 }
 
