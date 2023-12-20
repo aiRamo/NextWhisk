@@ -1,9 +1,22 @@
+.camera-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .camera-button{
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     margin-top: 5vh;
+    justify-self: center;
     width: fit-content;
     height: 60px;
-    cursor: pointer;
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
+    user-select: none;
+}
+
+.camera-button:hover{
+    opacity: 0.8;
 }

@@ -16,7 +16,7 @@ const CameraCaptureComponent: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='camera-container'>
       <input
         type="file"
         accept="image/*"

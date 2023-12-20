@@ -2,6 +2,9 @@ import './RecipeDashboard.css';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import RecipeSummarySection from '../components/dashboardComponents/RecipeSummarySection';
+import VisualAssistantComputerCard from '../components/dashboardComponents/VisualAssistantComputerCard';
+import CameraCaptureComponent from '../components/homePageComponents/CameraCaptureComponent';
+import Header from '../components/dashboardComponents/Header';
 
 interface RecipeJSON {
     title: string;
@@ -12,9 +15,16 @@ interface RecipeJSON {
     instructions: string[];
   }
 
+const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+
 const RecipeDashboard = () => {
     const location = useLocation();
     const recipeJSON: RecipeJSON = location.state?.recipeJSON;
+
+    const isMobile = isMobileDevice();
 
     useEffect(() => {    
         console.log(recipeJSON);
@@ -22,10 +32,13 @@ const RecipeDashboard = () => {
 
     return (
         <div className="recipe-dashboard-container">
+            <Header/>
             <div className="recipe-dashboard">
+                { isMobile && <CameraCaptureComponent />}
                 <div className="recipe-dashboard-info">
                     <RecipeSummarySection response='Success' recipeJSON={recipeJSON} />
                 </div>
+                { !isMobile && <VisualAssistantComputerCard/>}
             </div>
         </div>
     );

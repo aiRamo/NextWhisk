@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './HomePage.css';
 import '../components/homePageComponents/Loader.css'
 import SearchBar from '../components/homePageComponents/SearchBar';
-import CameraCaptureComponent from '../components/homePageComponents/CameraCaptureComponent';
 import { handleSearch } from '../handlers/customSearchHandlerAPI';
 import { SearchResultCard } from '../components/homePageComponents/SearchResultCard';
 import { validateUrlRecipeParser } from '../handlers/recipeHandlerAPI';
@@ -12,11 +11,6 @@ interface SearchResultItem {
   thumbnail?: string;
 }
 
-
-const isMobileDevice = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-};
-
 const HomePage = () => {
 
   const [loading, setLoading] = useState(false);
@@ -24,7 +18,6 @@ const HomePage = () => {
 
   const [results, setResults] = useState<SearchResultItem[]>([]);
   const [validResults, setValidResults] = useState<SearchResultItem[]>([]);
-  const isMobile = isMobileDevice();
 
   const [isTitleFadingOut, setIsTitleFadingOut] = useState(false);
 
@@ -73,7 +66,7 @@ const HomePage = () => {
 
   return (
     <div className='homescreen-container'>
-      <p className={titleClass}>Please provide a URL to an online recipe</p>
+      <p className={titleClass}>Please provide the name of a recipe</p>
       <SearchBar
         prompt={prompt}
         handleInputChange={handleInputChange}
@@ -102,7 +95,7 @@ const HomePage = () => {
         )}
       </div>)}
 
-      { isMobile && <CameraCaptureComponent />}
+      
     </div>
   );
 };

@@ -110,12 +110,12 @@
 }
 
 @media screen and (orientation: portrait) {
-    @keyframes fadeIn {
-        from {
+    @keyframes fadeInSearchResultCard {
+        0% {
             opacity: 0;
             transform: translateX(-20px); /* Start from the left */
         }
-        to {
+        100% {
             opacity: 1;
             transform: translateX(0);
         }
