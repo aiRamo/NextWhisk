@@ -1,0 +1,46 @@
+.visual-assistant-container {
+    margin-top: 8vh;
+    display: flex;
+    background-color: #7d9ad1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 92vh;
+    width: 100vw;
+}
+
+.visual-assistant-info-container {
+    align-self: center;
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #b1c3e6;
+    width: 96vw;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    height: 89vh;
+    align-items: center;
+    overflow: hidden;
+}
+
+.visual-assistant-recipe-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    height: auto;
+    min-height: 20vh;
+    margin-block: 2vh;
+    
+}
+
+
+.visual-assistant-list-entity {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 60vh;
+    font-weight: 600;
+    user-select: none;
+    padding-left: 0;
+}

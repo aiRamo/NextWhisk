@@ -57,6 +57,8 @@ const HomePage = () => {
   }, [results]);
 
   const handleIconClick = () => {
+    if (prompt === '') return;
+    
     setIsTitleFadingOut(true);
     setValidResults([]);
     handleSearch(prompt, setResults, setLoading);

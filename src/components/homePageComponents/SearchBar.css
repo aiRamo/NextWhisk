@@ -17,10 +17,8 @@
 
 .input-wrapper {
     display: flex;
-    background-color: white;
     justify-content: space-between;
     align-items: center;
-    border-radius: 12px;
     margin-top: 5vh;
   }
 
@@ -35,6 +33,10 @@
   justify-items: center;
   resize: none;
   outline: none;
+  background-color: #fff;
+  border-radius: 0px;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
 }
 
 .input-search-wrapper {
@@ -73,7 +75,7 @@
   display: flex;
   min-width: 100%;
   justify-content: center;
-  background-color: lightgrey;
+  background-color: #abbcdb;
   align-items: center;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -103,12 +105,13 @@
       margin-top: 2vh;
     }
     100% {
-      margin-top: 0vh;
+      margin-top: 6vh;
     }
   }
 
   
   .input-wrapper {
+    align-self: center;
     margin-top: 2vh;
   }
 
@@ -118,7 +121,6 @@
   .homescreen-url-input {
     width: 65vw;
     font-size: 16px;
-    background-color: #fff;
     color: #000;
   }
   .mGlass-img {

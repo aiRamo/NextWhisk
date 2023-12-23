@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import RecipeSummarySection from '../components/dashboardComponents/RecipeSummarySection';
 import VisualAssistantComputerCard from '../components/dashboardComponents/VisualAssistantComputerCard';
-import CameraCaptureComponent from '../components/homePageComponents/CameraCaptureComponent';
+import VisualAssistantButton from '../components/dashboardComponents/VisualAssistantButton';
 import Header from '../components/dashboardComponents/Header';
 
 interface RecipeJSON {
@@ -34,7 +34,7 @@ const RecipeDashboard = () => {
         <div className="recipe-dashboard-container">
             <Header/>
             <div className="recipe-dashboard">
-                { isMobile && <CameraCaptureComponent />}
+                { isMobile && <VisualAssistantButton recipeJSON={recipeJSON}/>}
                 <div className="recipe-dashboard-info">
                     <RecipeSummarySection response='Success' recipeJSON={recipeJSON} />
                 </div>

@@ -1,0 +1,41 @@
+@keyframes fadeInVAButton {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.visual-assistant-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 12vh;
+
+}
+
+.visual-assistant-button {
+    border: 1px solid #fff;
+    background-color: #8ba1c9;
+    border-radius: 12px;
+    color: white;
+    justify-self: flex-end;
+    width: 90%;
+    height: 100%;
+    margin-top: 2vh;
+    transition: all 0.3s ease;
+    user-select: none;
+    animation: fadeInVAButton 0.2s ease-in-out forwards;
+}
+
+.visual-assistant-button:active {
+    opacity: 0.2;
+    border: 0px solid #fff;
+}
+
+.visual-assistant-button:hover {
+    opacity: 0.2;
+    border: 1px solid #fff;
+}
