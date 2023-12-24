@@ -8,15 +8,23 @@
 .camera-button{
     background-color: #fff;
     color: #000;
-    margin-top: 5vh;
     justify-self: center;
-    width: fit-content;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
     user-select: none;
+    padding: 0;
+    border-radius: 25px;
 }
 
 .camera-button:hover{
     opacity: 0.8;
+}
+
+.Camera-img{
+    display: flex;  
+    width: 90%;   
+    margin-left: 5%;   
+    user-select: none;      
 }

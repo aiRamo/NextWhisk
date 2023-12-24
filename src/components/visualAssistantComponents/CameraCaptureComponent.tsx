@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './CameraCaptureComponent.css';
+import Camera from '../../assets/Camera.png';
 
 const CameraCaptureComponent: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -26,7 +27,7 @@ const CameraCaptureComponent: React.FC = () => {
         style={{ opacity: 0, position: 'absolute', zIndex: -1 }}
       />
       <button onClick={handleButtonClick} className='camera-button'>
-        Take Photo
+        <img src={Camera} alt="Camera" className='Camera-img' />
       </button>
     </div>
   );
