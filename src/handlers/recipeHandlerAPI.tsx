@@ -1,6 +1,19 @@
 // recipeHandler.js
 import axios from 'axios';
 
+interface NutrientInfo {
+  servingSize: string;
+  calories: string;
+  carbohydrateContent: string;
+  proteinContent: string;
+  fatContent: string;
+  saturatedFatContent: string;
+  cholesterolContent: string;
+  sodiumContent: string;
+  fiberContent: string;
+  sugarContent: string;
+}
+
 interface RecipeJSON {
   title: string;
   host: string;
@@ -8,6 +21,7 @@ interface RecipeJSON {
   yields: string;
   ingredients: string[];
   instructions: string[];
+  nutrients: NutrientInfo;
 }
 
 const urlRegex = new RegExp(

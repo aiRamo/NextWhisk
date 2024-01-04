@@ -79,25 +79,24 @@ const HomePage = () => {
       {loading && <div className='loader'/>}
 
       {validResults.length == 3 && !loading &&(
-      <div className='search-results-container'>
-        {searchResultCards.length >= 1 && (
-          <div className="first-column">
-            {searchResultCards[0]}
-          </div>
-        )}
-        {searchResultCards.length >= 2 && (
-          <div className="middle-column">
-            {searchResultCards[1]}
-          </div>
-        )}
-        {searchResultCards.length >= 3 && (
-          <div className="last-column">
-            {searchResultCards[2]}
-          </div>
-        )}
-      </div>)}
-
-      
+        <div className='search-results-container'>
+          {searchResultCards.length >= 1 && (
+            <div className="first-column">
+              {searchResultCards[0]}
+            </div>
+          )}
+          {searchResultCards.length >= 2 && (
+            <div className="middle-column">
+              {searchResultCards[1]}
+            </div>
+          )}
+          {searchResultCards.length >= 3 && (
+            <div className="last-column">
+              {searchResultCards[2]}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

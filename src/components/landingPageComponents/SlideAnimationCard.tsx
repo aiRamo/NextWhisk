@@ -12,7 +12,7 @@ const SlideAnimationCard = () => {
       const clientHeight = document.documentElement.clientHeight;
       const scrollPosition = (scrollTop + clientHeight) / scrollHeight * 100;
 
-      if (scrollPosition > 80) {
+      if (scrollPosition > 90) {
         setTopPosition(`0vh`);
         setOpacity(1);
       }

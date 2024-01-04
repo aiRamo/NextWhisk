@@ -1,0 +1,17 @@
+.nutrient-info-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0%;
+}
+
+.diet-info-text {
+    font-size: 12px;
+    font-weight: 250;
+    margin: 0;
+    margin-bottom: 10px;
+    color: grey;
+    align-self: center;
+}
