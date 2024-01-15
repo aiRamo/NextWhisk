@@ -3,6 +3,7 @@ import './SearchResultCard.css';
 import { handleUrlRecipeParser } from '../../handlers/recipeHandlerAPI';
 import { useNavigate } from 'react-router-dom';
 import NutrientData from './NutrientData';
+import { useLink } from '../../handlers/RecipeLink';
 
 
 interface SearchResultItem {
@@ -48,6 +49,8 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
     const [animationPhase, setAnimationPhase] = useState<'idle' | 'fadeIn' | 'fadeOut'>('idle');
     const timeoutRef = useRef<number | null>(null);
 
+    const { updateLink } = useLink();
+
     const handleMouseEnter = () => {
         if (animationPhase !== 'fadeIn') {
             setAnimationPhase('fadeIn');
@@ -92,7 +95,7 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
         if (result.thumbnail) {
             setImage([{ src: result.thumbnail }]);
         } else {
-            setImage([]); // Or set to a default image array
+            setImage([]);
         }
     }, [result]);
 
@@ -103,7 +106,7 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result }) =>
     }, [recipeJSON]);
 
     const handleCardClick = () => {
-        
+        updateLink(result.link);
         navigate('/dashboard', {state: { recipeJSON }}); // Navigate to RecipeDashboard when the card is clicked
     };
 

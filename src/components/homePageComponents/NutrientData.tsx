@@ -45,12 +45,12 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
         const sugar = Math.round((parseInt(nutrients.sugarContent) / 50) * 100);
 
         setPercentages({
-            calories,
-            protein,
-            fat,
-            cholesterol,
-            sodium,
-            sugar
+            calories: isNaN(calories) ? -0.1 : calories,
+            protein: isNaN(protein) ? -0.1 : protein,
+            fat: isNaN(fat) ? -0.1 : fat,
+            cholesterol: isNaN(cholesterol) ? -0.1 : cholesterol,
+            sodium: isNaN(sodium) ? -0.1 : sodium,
+            sugar: isNaN(sugar) ? -0.1 : sugar
         });
     }
 
@@ -64,7 +64,7 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
                 const containerWidth = containerRef.current.offsetWidth;
                 const containerHeight = containerRef.current.offsetHeight;
                 const graphWidth = containerWidth - 50; // Adjusted for padding or margins
-                const graphHeight = containerHeight - 20; // Set to the same height as the container
+                const graphHeight = Math.max(0, containerHeight - 20); // Set to the same height as the container
     
                 // Call your function to draw the graph with the new size
                 drawGraph(graphWidth, graphHeight);
@@ -96,7 +96,7 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
     
             const margin = { top: 30, right: 20, bottom: 20, left: 40 },
                 width = graphWidth,
-                height = graphHeight - margin.top - margin.bottom;
+                height = Math.max(0, graphHeight - margin.top - margin.bottom);
     
             d3.select(d3Container.current).selectAll("*").remove();
     
@@ -134,14 +134,14 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
                 .attr('class', 'bar')
                 .attr('x', d => x(d.nutrient) || 0)
                 .attr('width', x.bandwidth())
-                .attr('y', height) // Start at the bottom of the graph
+                .attr('y', Math.max(0, height)) // Start at the bottom of the graph
                 .attr('height', 0) // Initial height is 0
                 .attr('fill', '#035096')
                 .transition() // Add transition
-                .delay((d, i) => i * 50) // Delay based on index of the data
+                .delay((_, i) => i * 50) // Delay based on index of the data
                 .duration(1000) // Duration
                 .attr('y', d => y(d.percentage))
-                .attr('height', d => height - y(d.percentage)); // Animate to final height
+                .attr('height', d => Math.max(0, height - y(d.percentage))); // Animate to final height
         
                 // Add labels to bars
                 svg.selectAll('.label')
@@ -149,12 +149,12 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
                 .enter().append('text')
                 .attr('class', 'label')
                 .attr('x', (d) => (x(d.nutrient) ?? 0) + x.bandwidth() / 2)
-                .attr('y', (d) => y(d.percentage) - 5)
+                .attr('y', (d) => y(isNaN(d.percentage) ? 0 : d.percentage) - 5) // Adjust Y position for NaN values
                 .attr('text-anchor', 'middle')
-                .text((d) => `${d.percentage}%`)
+                .text((d) => d.percentage == -0.1 ? 'N/A' : `${d.percentage}%`) // Display 'N/A' for NaN values
                 .style('opacity', 0) // Start with opacity 0 (invisible)
                 .transition() // Add transition
-                .delay((d, i) => (i * 50) + 400) // Delay of 1 second (after the bar animation)
+                .delay((_, i) => (i * 50) + 400) // Delay of 1 second (after the bar animation)
                 .duration(800) // Duration of the fade-in effect
                 .style('opacity', 1); // Animate to full opacity
         }

@@ -5,6 +5,7 @@ import RecipeSummarySection from '../components/dashboardComponents/RecipeSummar
 import VisualAssistantComputerCard from '../components/dashboardComponents/VisualAssistantComputerCard';
 import VisualAssistantButton from '../components/dashboardComponents/VisualAssistantButton';
 import Header from '../components/dashboardComponents/Header';
+import { useLink } from '../handlers/RecipeLink';
 
 interface RecipeJSON {
     title: string;
@@ -26,13 +27,15 @@ const RecipeDashboard = () => {
 
     const isMobile = isMobileDevice();
 
+    const { link } = useLink();
+
     useEffect(() => {    
         console.log(recipeJSON);
     }, [recipeJSON]);
 
     return (
         <div className="recipe-dashboard-container">
-            <Header/>
+            <Header url={link} title={recipeJSON.title}/>
             <div className="recipe-dashboard">
                 { isMobile && <VisualAssistantButton recipeJSON={recipeJSON}/>}
                 <div className="recipe-dashboard-info">

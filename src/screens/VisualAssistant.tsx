@@ -5,6 +5,7 @@ import Header from '../components/dashboardComponents/Header';
 import CameraCaptureComponent from '../components/visualAssistantComponents/CameraCaptureComponent';
 import InstructionViewer from '../components/visualAssistantComponents/InstructionViewer';
 import IngredientModal from '../components/visualAssistantComponents/IngredientModal';
+import { useLink } from '../handlers/RecipeLink';
 
 
 import IngredientIcon from '../assets/Ingredients.png';
@@ -20,6 +21,8 @@ interface RecipeJSON {
 }
 
 const VisualAssistant = () => {
+
+    const { link } = useLink();
 
     const location = useLocation();
     const recipeJSON: RecipeJSON = location.state?.recipeJSON;
@@ -51,7 +54,7 @@ const VisualAssistant = () => {
             {isModalOpen && <IngredientModal ingredients={ingredients} setIsModalOpen={setIsModalOpen}/>}
 
             <div className='visual-assistant-container'>
-                <Header/>
+                <Header url={link} title={recipeJSON.title}/>
                 
                 <div className='visual-assistant-info-container'>
                     <div className='visual-assistant-camera-row'>
