@@ -4,6 +4,7 @@
     align-content: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
     padding: 0%;
 }
 
@@ -13,5 +14,29 @@
     margin: 0;
     margin-bottom: 10px;
     color: grey;
+    align-self: center;
+}
+
+.no-data-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    padding: 0%;
+
+}
+
+.graph-photo {
+    height: 80%;
+    object-fit: contain;
+    align-self: center;
+}
+
+.no-data-text {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 10px;
     align-self: center;
 }

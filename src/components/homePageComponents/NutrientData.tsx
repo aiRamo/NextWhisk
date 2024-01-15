@@ -3,6 +3,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './NutrientData.css'; // You may need to create a separate CSS file for this component
 import * as d3 from 'd3';
 
+import Graph from '../../assets/Graph.png';
+
 interface NutrientInfo {
     servingSize: string;
     calories: string;
@@ -163,8 +165,21 @@ const NutrientInfo: React.FC<NutrientInfoProps> = ({ nutrients }) => {
 
     return (
         <div className="nutrient-info-container" ref={containerRef}>
-            <div ref={d3Container} />
-            <p className="diet-info-text">Percentages based on a 2000-calorie diet.</p>
+            {percentages && (Math.max(...Object.values(percentages)) >= 0) &&
+                <>
+                    <div ref={d3Container} />
+                    <p className="diet-info-text">Percentages based on a 2000-calorie diet.</p>
+                </>
+                
+            } 
+            
+            {percentages && (Math.max(...Object.values(percentages)) < 0) &&
+                <div className="no-data-container">
+                    <img src={Graph} alt="Graph" className='graph-photo'/>
+                    <p className="no-data-text">No data available.</p>
+                </div>
+            }
+            
         </div>
     );
 };
