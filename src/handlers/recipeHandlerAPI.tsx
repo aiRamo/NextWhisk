@@ -24,6 +24,10 @@ interface RecipeJSON {
   nutrients: NutrientInfo;
 }
 
+function cleanTextArray(textArray: string[]): string[] {
+  return textArray.map(text => text.replace(/�/g, ''));
+}
+
 const urlRegex = new RegExp(
     '^(https?:\\/\\/)?'+ // protocol
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name and extension
@@ -37,12 +41,18 @@ const urlRegex = new RegExp(
 
 async function tryScraping(prompt: string) {
   try {
-    const res = await axios.post('http://192.168.1.238:3000/scrape', { prompt });
+    const res = await axios.post('http://192.168.1.238:3000/scrape', { prompt }, {
+      responseType: 'blob'
+    });
 
-    if (typeof res.data === 'string' && res.data.startsWith('Error')) {
-      throw new Error(res.data);
+    const text = await new Response(res.data).text(); 
+
+    const data = JSON.parse(text); 
+
+    if (typeof data === 'string' && data.startsWith('Error')) {
+      throw new Error(data);
     } else {
-      return res.data;
+      return data;
     }
   } catch (error) {
 
@@ -58,7 +68,10 @@ export const handleUrlRecipeParser = async (
     if (prompt !== '' && urlRegex.test(prompt)) {
       try {
         const recipeData = await tryScraping(prompt);
-        setRecipeJSON(recipeData);
+
+        const cleanedIngredients = cleanTextArray(recipeData.ingredients);
+        const cleanedInstructions = cleanTextArray(recipeData.instructions);
+        setRecipeJSON({ ...recipeData, ingredients: cleanedIngredients, instructions: cleanedInstructions });
         setResponse("Success");
       } catch (error) {
         setResponse('Error fetching response');

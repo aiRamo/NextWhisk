@@ -52,6 +52,10 @@
     user-select: none;
 }
 
+.ingredients {
+    list-style: disc;
+}
+
 .error-message {
     color: #690F49;
     font-size: 20px;

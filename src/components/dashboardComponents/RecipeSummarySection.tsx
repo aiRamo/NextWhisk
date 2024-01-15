@@ -23,7 +23,7 @@ const RecipeSummarySection = ({response, recipeJSON}: RSSProps) => {
                     <ul className="column">
                         <h3 className='list-header'>Ingredients</h3>
                         {Object.entries(recipeJSON.ingredients).map(([key, value]) => (
-                        <li key={key} className='list-entity'>{value + '\n'}</li>
+                        <li key={key} className='list-entity ingredients'>{value + '\n'}</li>
                         ))}
                     </ul>
 
