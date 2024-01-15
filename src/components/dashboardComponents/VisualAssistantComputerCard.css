@@ -7,7 +7,10 @@
     }
 }
 
+
 .visual-assistant-computer-card{
+    position: relative;
+    z-index: 0;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -15,6 +18,59 @@
     margin: 20px;
     border: 2px solid white;
     animation: fadeInVACard 1s ease-in-out forwards;
+    align-content: center;
+}
+
+.visual-assistant-demo-section {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0%;
+
+}
+
+.visual-assistant-demo-text{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #000;
+    user-select: none;
+    justify-self: center;
+    margin-block: 5%;
+}
+
+.title {
+    color: #fff;
+}
+
+.demo-choice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+
+}
+
+.demo-radio-button{
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    align-self: center;
+    height: 8%;
+    width: 8%;
+}
+
+.demo-photo{
+    width: 60%;
+    margin-block: 2%;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 .VALogo-img{
@@ -24,14 +80,41 @@
     max-height: 500px;
     object-fit: cover;
     align-self: center;
-    margin-top: 10%;
+    margin-top: -10%;
+    margin-bottom: -15%;
 }
 
 .visual-assistant-text{
     font-size: 24px;
     font-weight: 600;
-    margin-top: -60px;
-    margin-bottom: 80px;
+    margin-bottom: 5%;
     color: #fff;
     align-self: center;
+}
+
+.visual-assistant-demo-button{
+    position: absolute;
+    display: flex;
+    bottom: 5%;
+    left: 25%;
+    width: 50%;
+    height: 12%;
+    background-color: #fff;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.visual-assistant-demo-button:hover{
+    opacity: 0.8;
+}
+
+.visual-assistant-demo-text{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    font-size: 24px;
+    font-weight: 600;
+    user-select: none;
 }

@@ -9,6 +9,7 @@
         width: 100vw;
         height: 5vh;
         background-color: #7d9ad1;
+        z-index: 10;
     }
 
     .header-content {
@@ -33,7 +34,7 @@
         font-weight: 400;
         font-family: Georgia, serif;
         color: white;
-        align-self: flex-start;
+        align-self: center;
     }
 
     .Logo-img {

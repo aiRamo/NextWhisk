@@ -1,11 +1,12 @@
 import './RecipeDashboard.css';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import RecipeSummarySection from '../components/dashboardComponents/RecipeSummarySection';
 import VisualAssistantComputerCard from '../components/dashboardComponents/VisualAssistantComputerCard';
 import VisualAssistantButton from '../components/dashboardComponents/VisualAssistantButton';
 import Header from '../components/dashboardComponents/Header';
 import { useLink } from '../handlers/RecipeLink';
+import demoRecipeJSON from '../Demo/demoRecipe.json';
 
 interface RecipeJSON {
     title: string;
@@ -25,6 +26,8 @@ const RecipeDashboard = () => {
     const location = useLocation();
     const recipeJSON: RecipeJSON = location.state?.recipeJSON;
 
+    const [demoMode, setDemoMode] = useState(false);
+
     const isMobile = isMobileDevice();
 
     const { link } = useLink();
@@ -35,13 +38,13 @@ const RecipeDashboard = () => {
 
     return (
         <div className="recipe-dashboard-container">
-            <Header url={link} title={recipeJSON.title}/>
+            <Header url={link} title={demoMode ? demoRecipeJSON.title : recipeJSON.title}/>
             <div className="recipe-dashboard">
-                { isMobile && <VisualAssistantButton recipeJSON={recipeJSON}/>}
+                { isMobile && <VisualAssistantButton recipeJSON={demoMode ? demoRecipeJSON : recipeJSON}/>}
                 <div className="recipe-dashboard-info">
-                    <RecipeSummarySection response='Success' recipeJSON={recipeJSON} />
+                    <RecipeSummarySection response='Success' recipeJSON={demoMode ? demoRecipeJSON : recipeJSON} />
                 </div>
-                { !isMobile && <VisualAssistantComputerCard/>}
+                { !isMobile && <VisualAssistantComputerCard setDemoMode={setDemoMode} demoMode={demoMode}/> }
             </div>
         </div>
     );
