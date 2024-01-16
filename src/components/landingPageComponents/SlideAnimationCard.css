@@ -19,8 +19,10 @@
   }
 
   .card-item {
+    position: relative;
     background-color: #F4F3EE;
     display: flex;
+    flex-direction: center;
     justify-content: center;
     align-items: center;
     min-height: 25vh;
@@ -30,8 +32,50 @@
     font-weight: 600;
   }
 
+  .card-sub-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    min-height: 25vh;
+    margin-inline: 10px;
+    border-radius: 4px;
+  }
+
+  .card-line {
+    width: 2px;
+    min-height: 20vh;
+    background-color: #000;
+  }
+
   .card-text {
     color: #000;
+    text-align: center;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+
+  .Google-img {
+    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .Openai-img {
+    margin-left: 10px;
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+  }
+
+  .Azure-img {
+    margin-left: 10px;
+    height: 95%;
+    width: 95%;
+    object-fit: contain;
   }
 }
 
@@ -67,8 +111,47 @@
     font-size: 20px;
     font-weight: 600;
   }
+  .card-sub-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    min-height: 25vh;
+    margin-inline: 10px;
+    border-radius: 4px;
+  }
+
+  .card-line {
+    width: 2px;
+    min-height: 20vh;
+    background-color: #000;
+  }
   .card-text {
     color: #000;
+    text-align: center;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+  }
+  .Google-img {
+    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .Openai-img {
+    margin-left: 10px;
+    height: 90%;
+    width: 90%;
+    object-fit: contain;
+  }
+
+  .Azure-img {
+    margin-left: 10px;
+    height: 95%;
+    width: 95%;
+    object-fit: contain;
   }
 }
 

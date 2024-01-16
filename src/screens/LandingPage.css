@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     background-color: #7d9ad1;
+    
   }
 
   ::-webkit-scrollbar {
@@ -18,15 +19,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "text image";
-    background: hsla(213, 88%, 31%, 1);
-    background: linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
-    background: -moz-linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, #7d9ad1 0%, hsla(0, 0%, 0%, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7d9ad1", endColorstr="#000000", GradientType=1);
-
-
+    background: linear-gradient(0deg, rgba(125, 154, 209, 1) 0%, rgba(0, 0, 0, 0.9) 100%), url('../assets/LandingBackground.webp') center center / cover no-repeat;
+    
     width: 100vw;
     min-height: 100vh;
+  }
+  .landing-background-image {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
 
   .landing-text-content {
@@ -44,11 +47,20 @@
     color: #fff;
   }
 
-  .landing-text {
+  .landing-subheader-text {
     justify-self: center;
     margin-top: 2vh;
-    font-size: 20px;
+    margin-bottom: 2vh;
+    font-size: 22px;
     font-weight: 600;
+    color: #fff;
+  }
+
+  .landing-text {
+    justify-self: center;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 300;
     color: #fff;
   }
 
@@ -56,6 +68,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: fit-content;
+    height: fit-content;
   }
 
   .landing-get-started{
@@ -75,18 +89,43 @@
     color: #2B061E;
     cursor: pointer;
   }
+  .infographic-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 14vh;
+    margin-left: 8vw;
+    width: fit-content;
+    height: fit-content;
+  }
 
   .image-container {
     grid-area: image;
-    margin-bottom: 20px;
+    margin-block: 20px;
     object-fit: cover;
+  }
+
+  .infographic-text-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block-start: 15%;
+    padding-block-end: 15%;
+    width: 65%;
+    margin-left: 50px;
+  }
+
+  .infographic-text{
+    color: #fff;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Courier New', monospace;
   }
 
   .landing-image {
     height: 80vh;
-    margin-top: 15vh;
-    margin-left: 6vw;
-    width: auto;
+    width: fit-content;
     object-fit: contain;
     justify-self: end;
   }

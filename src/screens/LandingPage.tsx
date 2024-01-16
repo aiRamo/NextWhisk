@@ -1,12 +1,14 @@
+import BackgroundPhoto from '../assets/LandingBackground.webp';
 import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 import SlideAnimationCard from '../components/landingPageComponents/SlideAnimationCard';
+import Infographic from '../assets/Infographic.png';
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
   const navigateToHomePage = () => {
-    navigate('/home'); // make sure the route is defined in your router
+    navigate('/home');
   };
 
   return (
@@ -14,13 +16,21 @@ const LandingPage = () => {
         <div className="landing-header-content">
             <div className='landing-text-content'>
                 <h1 className="landing-header-text">Introducing NextWhisk</h1>
-                <p className="landing-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum congue tincidunt purus ut volutpat. Phasellus rhoncus egestas lacus. Suspendisse odio ipsum, dictum vel commodo sit amet, cursus ut nisl. Duis eleifend felis eget ante eleifend tempus. Quisque blandit in libero ac auctor.  </p>
+                <p className="landing-subheader-text">Transform the way you cook.</p>
+                <p className="landing-text">Leveraging powerful chatGPT technology to analyze your cooking photos and offer real-time, image-based recipe guidance at the touch of a button.</p>
                 <div className="get-started-wrapper" onClick={navigateToHomePage}>
                     <p className='landing-get-started'>Try It Out</p>
                 </div>
             </div>
-            <div className='image-container'>
-              <img src="https://picsum.photos/375/667" alt="description" className="landing-image" />
+            <div className='infographic-container' >
+              <div className='image-container'>
+                <img src={Infographic} alt="description" className="landing-image" />
+              </div>
+              <div className='infographic-text-section'>
+                <p className='infographic-text'>Search for your favorite recipes</p>
+                <p className='infographic-text'>Compare the results</p>
+                <p className='infographic-text'>Get instant instructions from your phone</p>
+              </div>
             </div>
         </div>
         <SlideAnimationCard />
