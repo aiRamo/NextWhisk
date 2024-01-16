@@ -7,6 +7,62 @@
     }
   }
 
+@keyframes highlightAnimation {
+    0% {
+        background-color: transparent;
+        box-shadow: none;
+        
+    }
+    100% {
+        background-color: white;
+        box-shadow: 0px 0px 10px grey; 
+        transform: scale(1.2);
+        padding-block: 5px;
+    }
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOutOverlay {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    animation: fadeInOverlay 0.5s ease forwards;
+}
+
+.overlay.fade-out {
+    animation: fadeOutOverlay 0.5s ease forwards; /* Fade out */
+}
+
+.overlay-text {
+    position: absolute;
+    left: 50%;
+    bottom: 100%; /* Position above the list item */
+    transform: translateX(-50%);
+    animation: fadeInOverlay 0.5s ease forwards;
+    /* Additional styling as needed */
+    z-index: 3; /* Ensure it's above the list item */
+    white-space: nowrap; /* Prevent text wrapping */
+    color: #ffffff;
+    text-shadow: 0px 0px 2px black;
+}
+
+.overlay-text.fade-out {
+    animation: fadeOutOverlay 0.5s ease forwards;
+}
+
 .grid-container {
     margin: 20px;
     display: grid;
@@ -45,11 +101,21 @@
 }
 
 .list-entity {
+    position: relative;
     color: #122012;
     margin-bottom: 10px;
     margin-right: 15px;
     font-weight: 600;
     user-select: none;
+    border-radius: 12px;
+    padding-left: 4px;
+    list-style-position: inside;
+}
+
+.highlighted {
+    z-index: 2; /* Ensure this is above the overlay */
+    position: relative; /* Needed for z-index to work */
+    animation: highlightAnimation .3s ease-in-out forwards;
 }
 
 .ingredients {

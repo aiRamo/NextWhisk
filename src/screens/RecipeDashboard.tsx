@@ -27,6 +27,7 @@ const RecipeDashboard = () => {
     const recipeJSON: RecipeJSON = location.state?.recipeJSON;
 
     const [demoMode, setDemoMode] = useState(false);
+    const [detectedIndex, setDetectedIndex] = useState<number | null>(null);
 
     const isMobile = isMobileDevice();
 
@@ -42,9 +43,9 @@ const RecipeDashboard = () => {
             <div className="recipe-dashboard">
                 { isMobile && <VisualAssistantButton recipeJSON={demoMode ? demoRecipeJSON : recipeJSON}/>}
                 <div className="recipe-dashboard-info">
-                    <RecipeSummarySection response='Success' recipeJSON={demoMode ? demoRecipeJSON : recipeJSON} />
+                    <RecipeSummarySection response='Success' recipeJSON={demoMode ? demoRecipeJSON : recipeJSON} detectedIndex={detectedIndex} />
                 </div>
-                { !isMobile && <VisualAssistantComputerCard setDemoMode={setDemoMode} demoMode={demoMode}/> }
+                { !isMobile && <VisualAssistantComputerCard setDemoMode={setDemoMode} demoMode={demoMode} setDetectedIndex={setDetectedIndex}/> }
             </div>
         </div>
     );
