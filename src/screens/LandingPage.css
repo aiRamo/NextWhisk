@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "text image";
-    background: linear-gradient(0deg, rgba(125, 154, 209, 1) 0%, rgba(0, 0, 0, 0.9) 100%), url('../assets/LandingBackground.webp') center center / cover no-repeat;
+    background: linear-gradient(0deg, rgba(125, 154, 209, 1) 0%, rgba(0, 0, 0, 0.85) 100%), url('../assets/LandingBackground.webp') center center / cover no-repeat;
     
     width: 100vw;
     min-height: 100vh;

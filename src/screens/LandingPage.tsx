@@ -1,4 +1,3 @@
-import BackgroundPhoto from '../assets/LandingBackground.webp';
 import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 import SlideAnimationCard from '../components/landingPageComponents/SlideAnimationCard';
