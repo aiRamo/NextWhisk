@@ -41,7 +41,7 @@ const urlRegex = new RegExp(
 
 async function tryScraping(prompt: string) {
   try {
-    const res = await axios.post('http://192.168.1.238:3000/scrape', { prompt }, {
+    const res = await axios.post('http://localhost:3000/scrape', { prompt }, {
       responseType: 'blob'
     });
 

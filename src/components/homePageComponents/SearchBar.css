@@ -25,6 +25,7 @@
 .homescreen-url-input {
   width: 60vw;
   height: 5vh;
+  min-height: 40px;
   font-size: 22px;
   padding-inline: 10px;
   margin-left: 16px;
@@ -74,6 +75,7 @@
 .input-icon-wrapper {
   display: flex;
   min-width: 100%;
+  min-height: 44px;
   justify-content: center;
   background-color: #b7c3da;
   align-items: center;

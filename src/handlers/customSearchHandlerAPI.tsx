@@ -10,7 +10,7 @@ interface SearchItem {
 export const handleSearch = async (query: string, setResults: (value: SearchItem[]) => void, setLoading: (value: boolean) => void) => {
     setLoading(true);
     try {
-        const response = await axios.post('http://192.168.1.238:3000/search', { query });
+        const response = await axios.post('http://localhost:3000/search', { query });
         const items: SearchItem[] = response.data.items;
 
         // Extract only link and thumbnail URI
